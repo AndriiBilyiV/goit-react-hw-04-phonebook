@@ -31,7 +31,6 @@ export const App = () => {
   }
 
   const delContact = ({ id }) => {
-    const fil = contacts.filter(contact => contact.id !== id);
     setContacts(prevState => 
       prevState.filter(contact => contact.id!==id)
     )
