@@ -5,18 +5,17 @@ import { Filter } from "./Filter/Filter";
 import { sample } from "tempContacts";
 import { useEffect, useState } from "react";
 
-const currentStorage = JSON.parse(localStorage.getItem('contacts'))
-const initial = currentStorage ? currentStorage : sample
+
 
 export const App = () => {
-  const [contacts, setContacts] = useState(initial);
+  const [contacts, setContacts] = useState(() => {
+    const currentStorage = JSON.parse(localStorage.getItem('contacts'))
+return currentStorage ? currentStorage : sample
+  });
   const [filter, setFilter] = useState('');
 
 
   useEffect(() => {
-    console.log(contacts)
-    const currentStorage = localStorage.getItem('contacts')
-    console.log(JSON.parse(currentStorage))
       localStorage.setItem('contacts', JSON.stringify(contacts))
 },[contacts])
 
